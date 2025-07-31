@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Ashram Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f4f4f9;
+    }
+
+    .payment-box {
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .btn-pay {
+      background-color: #4a148c;
+      color: white;
+    }
+
+    .btn-pay:hover {
+      background-color: #38006b;
+    }
+
+    .info-section {
+      border-right: 1px solid #e0e0e0;
+      background-color: #311b92;
+      color: #f5f5f5;
+    }
+
+    .info-section a,
+    .info-section h3,
+    .info-section p,
+    .info-section small,
+    .info-section h5,
+    .info-section h6 {
+      color: #f5f5f5;
+    }
+
+    .badge-info-box {
+      background-color: #fdfcff;
+      border-left: 4px solid #6a1b9a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-title {
+      font-weight: 600;
+      color: #4a148c;
+      margin-bottom: 1rem;
+    }
+
+    .badge-custom {
+      font-size: 0.9rem;
+      font-weight: 500;
+      background-color: #e8eaf6;
+      color: #3f51b5;
+      margin-right: 0.5rem;
+    }
+
+    .payment-icons img {
+      height: 40px;
+      width: 80px;
+      margin: 0 8px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container py-5">
+    <div class="row payment-box mx-auto">
+
+      <!-- Left Side -->
+      <div class="col-md-6 info-section p-4">
+        <div class="text-center mb-4">
+          <img src="./assets/programming-ashram (1).jpeg" alt="Ashram Logo" width="80" height="80" class="rounded-circle">
+        </div>
+        <h3 class="fw-bold">Programming Ashram | Secure Registration</h3>
+        <p class="text-light mt-3">
+          Enroll in <strong>Programming Ashram’s</strong> Data Analysis course and master the tools, techniques, and projects to analyze and visualize data for real-world applications.
+        </p>
+        <h5 class="mt-4">Selected Course:</h5>
+        <p class="mb-1 fw-semibold">Data Analysis</p>
+        <p><span class="badge bg-danger-subtle text-danger">Course Duration</span><strong> 6 Months</strong></p>
+
+        <h6 class="mt-4">Contact Us:</h6>
+        <p>Email: help.programmingashram.in@gmail.com<br>Phone: +91 8224973413</p>
+
+        <small class="text-light d-block mt-4">
+          By continuing, you agree to our terms and share information with Programming Ashram and Razorpay.
+        </small>
+      </div>
+
+      <!-- Right Side -->
+      <div class="col-md-6 p-4">
+        <h4 class="fw-semibold mb-3">Complete Registration</h4>
+
+        <div class="badge-info-box">
+          <div class="badge-title">Course Fee Breakdown</div>
+          <p><span class="badge badge-custom">Total Fee</span><strong> ₹5,999</strong></p>
+          <p><span class="badge badge-custom">Booking Amount (Pay Now)</span><strong> ₹2000</strong></p>
+          <p><span class="badge badge-custom">Remaining (2 EMIs from next month)</span><strong> ₹4,000</strong></p>
+          <p><span class="badge badge-custom">Course Duration</span><strong> 6 Months</strong></p>
+        </div>
+
+        <form id="upiForm">
+          <div class="mb-3">
+            <label class="form-label">Student Name</label>
+            <input type="text" id="studentName" class="form-control" placeholder="Enter your name" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Amount</label>
+            <input type="text" class="form-control" value="₹2000.00" readonly>
+          </div>
+          <a id="upiButton" href="#" class="btn btn-pay w-100" target="_blank">Pay ₹2000</a>
+
+          <div class="mt-4 text-center payment-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1200px-Google_Pay_Logo.svg.png" alt="Google Pay">
+            <img src="https://cdn.worldvectorlogo.com/logos/phonepe-1.svg" alt="PhonePe">
+            <img src="https://tinuiti.com/wp-content/uploads/legacysitecontent/cpcs/posts_01/2018/12/23161707/Amazon-Pay-logo-1024x197.png" alt="Amazon Pay">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const studentInput = document.getElementById("studentName");
+    const upiButton = document.getElementById("upiButton");
+
+    studentInput.addEventListener("input", () => {
+      const name = encodeURIComponent(studentInput.value.trim());
+      const upiURL = `upi://pay?pa=anshchourasia768-4@okhdfcbank&pn=Ansh%20Chourasia&am=1999&cu=INR&tn=Data%20Analysis%20Course%20(EMI1)%20-%20${name}`;
+      upiButton.href = upiURL;
+    });
+  </script>
+</body>
+
+</html>
